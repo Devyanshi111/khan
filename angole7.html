@@ -1,0 +1,54 @@
+<!DOCTYPE html> 
+<html lang="en" ng-app="studentMarksApp"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Student Marks Management System</title> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> 
+    <script src="po2.js"></script> 
+</head> 
+<body ng-app="studentMarksApp" ng-controller="StudentMarksController as vm"> 
+    <h1>Student Marks Management System</h1> 
+ 
+    <!-- Form for adding new student marks --> 
+    <form ng-submit="vm.addStudentMark()"> 
+        <label for="studentId">Student ID:</label> 
+        <input type="text" id="studentId" ng-model="vm.newMark.studentId" required><br> 
+ 
+        <label for="name">Name:</label> 
+        <input type="text" id="name" ng-model="vm.newMark.name" required><br> 
+ 
+        <label for="subject">Subject:</label> 
+        <input type="text" id="subject" ng-model="vm.newMark.subject" required><br> 
+ 
+        <label for="marks">Marks Obtained:</label> 
+        <input type="number" id="marks" ng-model="vm.newMark.marks" required><br> 
+ 
+        <button type="submit">Add Student Mark</button> 
+    </form> 
+ 
+    <!-- Table to display student marks --> 
+    <table border="1"> 
+        <thead> 
+            <tr> 
+                <th>Student ID</th> 
+                <th>Name</th> 
+                <th>Subject</th> 
+                <th>Marks Obtained</th> 
+                <th>Action</th> 
+            </tr> 
+        </thead> 
+        <tbody> 
+            <tr ng-repeat="mark in vm.studentMarks"> 
+                <td>{{ mark.studentId }}</td> 
+                <td>{{ mark.name }}</td> 
+                <td>{{ mark.subject }}</td> 
+                <td>{{ mark.marks }}</td> 
+                <td> 
+                    <button ng-click="vm.editStudentMark(mark)">Edit</button> 
+                    <button ng-click="vm.deleteStudentMark(mark)">Delete</button> 
+                </td> 
+            </tr> 
+        </tbody> 
+    </table> 
+</body> 
+</html>
